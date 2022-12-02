@@ -195,7 +195,7 @@ namespace IBTradingPlatform
             // Time Duration
             string strDuration = "3600 S";
             // Bar size
-            string strBarSize = "5 mins";
+            string strBarSize = "1 min";
 
             // Cancel Market Data
             IbClient.ClientSocket.cancelMktData(1);
