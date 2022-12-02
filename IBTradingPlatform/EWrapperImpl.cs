@@ -388,9 +388,8 @@ namespace IBTradingPlatform
         //! [historicaldata]
         public virtual void historicalData(int reqId, Bar bar)
         {
-            Console.WriteLine("HistoricalData. " + reqId + " - Time: " + bar.Time + ", Open: " + Util.DoubleMaxString(bar.Open) + ", High: " + Util.DoubleMaxString(bar.High) + 
-                ", Low: " + Util.DoubleMaxString(bar.Low) + ", Close: " + Util.DoubleMaxString(bar.Close) + ", Volume: " + Util.DecimalMaxString(bar.Volume) + 
-                ", Count: " + Util.IntMaxString(bar.Count) + ", WAP: " + Util.DecimalMaxString(bar.WAP));
+            string strHistoricalData = reqId + "," + bar.Time + "," + bar.Open + "," + bar.High + "," + bar.Low + "," + bar.Close + "," + bar.Volume;
+            myForm.AddItemHistoricalData(strHistoricalData);
         }
         //! [historicaldata]
 

@@ -34,6 +34,9 @@ namespace IBTradingPlatform
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
             this.BtnConnect = new System.Windows.Forms.Button();
             this.CbSymbol = new System.Windows.Forms.ComboBox();
             this.LbData = new System.Windows.Forms.ListBox();
@@ -65,8 +68,17 @@ namespace IBTradingPlatform
             this.BtnSell = new System.Windows.Forms.Button();
             this.CkOutside = new System.Windows.Forms.CheckBox();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
+            this.tabControl1 = new System.Windows.Forms.TabControl();
+            this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.HistoricalData = new System.Windows.Forms.ListBox();
+            this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.Chart = new System.Windows.Forms.DataVisualization.Charting.Chart();
             ((System.ComponentModel.ISupportInitialize)(this.NumQuantity)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.NumPrice)).BeginInit();
+            this.tabControl1.SuspendLayout();
+            this.tabPage1.SuspendLayout();
+            this.tabPage2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.Chart)).BeginInit();
             this.SuspendLayout();
             // 
             // BtnConnect
@@ -404,11 +416,73 @@ namespace IBTradingPlatform
             // 
             this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
             // 
+            // tabControl1
+            // 
+            this.tabControl1.Controls.Add(this.tabPage1);
+            this.tabControl1.Controls.Add(this.tabPage2);
+            this.tabControl1.Location = new System.Drawing.Point(493, 28);
+            this.tabControl1.Name = "tabControl1";
+            this.tabControl1.SelectedIndex = 0;
+            this.tabControl1.Size = new System.Drawing.Size(491, 478);
+            this.tabControl1.TabIndex = 31;
+            // 
+            // tabPage1
+            // 
+            this.tabPage1.Controls.Add(this.HistoricalData);
+            this.tabPage1.Location = new System.Drawing.Point(4, 22);
+            this.tabPage1.Name = "tabPage1";
+            this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage1.Size = new System.Drawing.Size(483, 452);
+            this.tabPage1.TabIndex = 0;
+            this.tabPage1.Text = "Historical Data";
+            this.tabPage1.UseVisualStyleBackColor = true;
+            // 
+            // HistoricalData
+            // 
+            this.HistoricalData.FormattingEnabled = true;
+            this.HistoricalData.Location = new System.Drawing.Point(20, 16);
+            this.HistoricalData.Name = "HistoricalData";
+            this.HistoricalData.Size = new System.Drawing.Size(438, 420);
+            this.HistoricalData.TabIndex = 0;
+            // 
+            // tabPage2
+            // 
+            this.tabPage2.Controls.Add(this.Chart);
+            this.tabPage2.Location = new System.Drawing.Point(4, 22);
+            this.tabPage2.Name = "tabPage2";
+            this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage2.Size = new System.Drawing.Size(483, 452);
+            this.tabPage2.TabIndex = 1;
+            this.tabPage2.Text = "Visual Chart";
+            this.tabPage2.UseVisualStyleBackColor = true;
+            // 
+            // Chart
+            // 
+            chartArea1.AxisX.IsStartedFromZero = false;
+            chartArea1.AxisY.IsStartedFromZero = false;
+            chartArea1.Name = "ChartArea1";
+            this.Chart.ChartAreas.Add(chartArea1);
+            legend1.Name = "Legend1";
+            this.Chart.Legends.Add(legend1);
+            this.Chart.Location = new System.Drawing.Point(32, 20);
+            this.Chart.Name = "Chart";
+            series1.ChartArea = "ChartArea1";
+            series1.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Candlestick;
+            series1.CustomProperties = "PriceUpColor=Red, PriceDownColor=Blue";
+            series1.Legend = "Legend1";
+            series1.Name = "Series1";
+            series1.YValuesPerPoint = 4;
+            this.Chart.Series.Add(series1);
+            this.Chart.Size = new System.Drawing.Size(427, 410);
+            this.Chart.TabIndex = 0;
+            this.Chart.Text = "chart1";
+            // 
             // Quantity
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1022, 563);
+            this.Controls.Add(this.tabControl1);
             this.Controls.Add(this.CkOutside);
             this.Controls.Add(this.BtnSell);
             this.Controls.Add(this.BtnBuy);
@@ -443,6 +517,10 @@ namespace IBTradingPlatform
             this.Text = "Form1";
             ((System.ComponentModel.ISupportInitialize)(this.NumQuantity)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.NumPrice)).EndInit();
+            this.tabControl1.ResumeLayout(false);
+            this.tabPage1.ResumeLayout(false);
+            this.tabPage2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.Chart)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -481,6 +559,11 @@ namespace IBTradingPlatform
         private Button BtnSell;
         private CheckBox CkOutside;
         private System.Windows.Forms.Timer timer1;
+        private TabControl tabControl1;
+        private TabPage tabPage1;
+        private ListBox HistoricalData;
+        private TabPage tabPage2;
+        private System.Windows.Forms.DataVisualization.Charting.Chart Chart;
     }
 }
 

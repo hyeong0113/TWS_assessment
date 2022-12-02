@@ -9,6 +9,7 @@ using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Windows.Forms.DataVisualization.Charting;
 
 namespace IBTradingPlatform
 {
@@ -20,9 +21,43 @@ namespace IBTradingPlatform
 
         delegate void SetTextCallbackTickPrice(string tickPrice);
 
+        delegate void SetCallbackHistoricalData(string strHistoricalData);
+
         int OrderId = 0;
 
         int Timer1Counter = 5;
+
+        List<string> rsi = new List<string>();
+
+        public void AddItemHistoricalData(string strHistoricalData)
+        {
+            if (this.TbLast.InvokeRequired)
+            {
+                SetCallbackHistoricalData data = new SetCallbackHistoricalData(AddItemHistoricalData);
+                try
+                {
+                    this.Invoke(data, new object[] { strHistoricalData });
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine("This is from historical data", ex);
+                }
+            }
+            else
+            {
+                string[] chartValue = strHistoricalData.Split(',');
+                // 0 - reqId, 1 - Date and time, 2 - Open, 3 - High, 4 - Low, 5 - Close, 6 - Volume, 7 - Count, 
+                string newValue = chartValue[1].Trim();
+                string outputString = chartValue[0] + "," + newValue + "," + chartValue[2] + ","
+                                    + chartValue[3] + "," + chartValue[4] + "," + chartValue[5];
+
+                rsi.Add(chartValue[5]);
+
+                HistoricalData.Items.Add(outputString);
+                Chart.Series["Series1"].Points.AddXY(chartValue[1], chartValue[3], chartValue[4], chartValue[5], chartValue[2]);
+            }
+
+        }
 
         public void AddListBoxItem(string text)
         {
@@ -94,7 +129,16 @@ namespace IBTradingPlatform
 
         private void Form1_Load(object sender, EventArgs e)
         {
-
+            // Creates the chart data
+            Chart.Series["Series1"].ChartType = SeriesChartType.Candlestick;
+            Chart.Series["Series1"].BorderColor = Color.Black;
+            Chart.Series["Series1"].Color = Color.Black;
+            Chart.Series["Series1"].CustomProperties = "PriceDownColor=Blue, PriceUpColor=Red";
+            Chart.ChartAreas[0].AxisX.MajorGrid.LineWidth = 0;
+            Chart.ChartAreas[0].AxisY.MajorGrid.LineWidth = 0;
+            Chart.ChartAreas[0].AxisY.MinorGrid.Enabled = false;
+            Chart.ChartAreas[0].AxisX.IsStartedFromZero = false;
+            Chart.ChartAreas[0].AxisY.IsStartedFromZero = false;
         }
 
         private void BtnConnect_Click(object sender, EventArgs e)
@@ -139,6 +183,20 @@ namespace IBTradingPlatform
 
         private void GetData()
         {
+            DateTime now = DateTime.Now;
+            // Clear Historical data
+            HistoricalData.Items.Clear();
+            IbClient.ClientSocket.cancelHistoricalData(99);
+
+            // Clear Chart
+            Chart.Series[0].Points.Clear();
+            // Set EmdTime
+            string strEndDate = now.ToString("yyyyMMDD 16:05:00");
+            // Time Duration
+            string strDuration = "3600 S";
+            // Bar size
+            string strBarSize = "5 mins";
+
             // Cancel Market Data
             IbClient.ClientSocket.cancelMktData(1);
 
@@ -167,6 +225,9 @@ namespace IBTradingPlatform
 
             // Kick off the subscription for real-time data (add the mktDataOptions list)
             IbClient.ClientSocket.reqMktData(1, contract, "", false, false, mkDataOptions);
+
+            IbClient.ClientSocket.reqHistoricalData(99, contract, "", strDuration, strBarSize, "TRADES", 1, 1, false, null);
+            timer1.Start();
         }
 
         private void CbSymbol_SelectedIndexChanged(object sender, EventArgs e)
