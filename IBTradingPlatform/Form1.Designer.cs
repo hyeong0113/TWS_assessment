@@ -33,10 +33,9 @@ namespace IBTradingPlatform
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea2 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend2 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series2 = new System.Windows.Forms.DataVisualization.Charting.Series();
             this.BtnConnect = new System.Windows.Forms.Button();
             this.CbSymbol = new System.Windows.Forms.ComboBox();
             this.LbData = new System.Windows.Forms.ListBox();
@@ -67,12 +66,13 @@ namespace IBTradingPlatform
             this.BtnBuy = new System.Windows.Forms.Button();
             this.BtnSell = new System.Windows.Forms.Button();
             this.CkOutside = new System.Windows.Forms.CheckBox();
-            this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.HistoricalData = new System.Windows.Forms.ListBox();
             this.tabPage2 = new System.Windows.Forms.TabPage();
             this.Chart = new System.Windows.Forms.DataVisualization.Charting.Chart();
+            this.label13 = new System.Windows.Forms.Label();
+            this.TbMA = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.NumQuantity)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.NumPrice)).BeginInit();
             this.tabControl1.SuspendLayout();
@@ -388,6 +388,7 @@ namespace IBTradingPlatform
             this.BtnBuy.TabIndex = 28;
             this.BtnBuy.Text = "BUY";
             this.BtnBuy.UseVisualStyleBackColor = false;
+            this.BtnBuy.Visible = false;
             this.BtnBuy.Click += new System.EventHandler(this.BtnBuy_Click);
             // 
             // BtnSell
@@ -411,10 +412,6 @@ namespace IBTradingPlatform
             this.CkOutside.Text = "OutsideRTH";
             this.CkOutside.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             this.CkOutside.UseVisualStyleBackColor = true;
-            // 
-            // timer1
-            // 
-            this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
             // 
             // tabControl1
             // 
@@ -458,30 +455,50 @@ namespace IBTradingPlatform
             // 
             // Chart
             // 
-            chartArea1.AxisX.IsStartedFromZero = false;
-            chartArea1.AxisY.IsStartedFromZero = false;
-            chartArea1.Name = "ChartArea1";
-            this.Chart.ChartAreas.Add(chartArea1);
-            legend1.Name = "Legend1";
-            this.Chart.Legends.Add(legend1);
+            chartArea2.AxisX.IsStartedFromZero = false;
+            chartArea2.AxisY.IsStartedFromZero = false;
+            chartArea2.Name = "ChartArea1";
+            this.Chart.ChartAreas.Add(chartArea2);
+            legend2.Name = "Legend1";
+            this.Chart.Legends.Add(legend2);
             this.Chart.Location = new System.Drawing.Point(32, 20);
             this.Chart.Name = "Chart";
-            series1.ChartArea = "ChartArea1";
-            series1.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Candlestick;
-            series1.CustomProperties = "PriceUpColor=Red, PriceDownColor=Blue";
-            series1.Legend = "Legend1";
-            series1.Name = "Series1";
-            series1.YValuesPerPoint = 4;
-            this.Chart.Series.Add(series1);
+            series2.ChartArea = "ChartArea1";
+            series2.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Candlestick;
+            series2.CustomProperties = "PriceUpColor=Red, PriceDownColor=Blue";
+            series2.Legend = "Legend1";
+            series2.Name = "Series1";
+            series2.YValuesPerPoint = 4;
+            this.Chart.Series.Add(series2);
             this.Chart.Size = new System.Drawing.Size(427, 410);
             this.Chart.TabIndex = 0;
             this.Chart.Text = "chart1";
+            // 
+            // label13
+            // 
+            this.label13.AutoSize = true;
+            this.label13.Location = new System.Drawing.Point(180, 109);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(85, 13);
+            this.label13.TabIndex = 33;
+            this.label13.Text = "Moving Average";
+            this.label13.UseWaitCursor = true;
+            // 
+            // TbMA
+            // 
+            this.TbMA.Location = new System.Drawing.Point(183, 125);
+            this.TbMA.Name = "TbMA";
+            this.TbMA.Size = new System.Drawing.Size(100, 20);
+            this.TbMA.TabIndex = 32;
+            this.TbMA.Text = "0.00";
             // 
             // Quantity
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1022, 563);
+            this.Controls.Add(this.label13);
+            this.Controls.Add(this.TbMA);
             this.Controls.Add(this.tabControl1);
             this.Controls.Add(this.CkOutside);
             this.Controls.Add(this.BtnSell);
@@ -558,12 +575,13 @@ namespace IBTradingPlatform
         private Button BtnBuy;
         private Button BtnSell;
         private CheckBox CkOutside;
-        private System.Windows.Forms.Timer timer1;
         private TabControl tabControl1;
         private TabPage tabPage1;
         private ListBox HistoricalData;
         private TabPage tabPage2;
         private System.Windows.Forms.DataVisualization.Charting.Chart Chart;
+        private Label label13;
+        private TextBox TbMA;
     }
 }
 

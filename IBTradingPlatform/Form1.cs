@@ -25,10 +25,10 @@ namespace IBTradingPlatform
 
         int OrderId = 0;
 
-        int Timer1Counter = 5;
-
-        List<string> rsi = new List<string>();
-
+        // Lists for storing open price and close price for calculating moving average
+        List<decimal> OpenMovingValue = new List<decimal>();
+        List<decimal> CloseMovingValue = new List<decimal>();
+        decimal MovingAverage = 0;
         public void AddItemHistoricalData(string strHistoricalData)
         {
             if (this.TbLast.InvokeRequired)
@@ -51,10 +51,16 @@ namespace IBTradingPlatform
                 string outputString = chartValue[0] + "," + newValue + "," + chartValue[2] + ","
                                     + chartValue[3] + "," + chartValue[4] + "," + chartValue[5];
 
-                rsi.Add(chartValue[5]);
+                OpenMovingValue.Add(Convert.ToDecimal(chartValue[2]));
+                CloseMovingValue.Add(Convert.ToDecimal(chartValue[5]));
 
                 HistoricalData.Items.Add(outputString);
                 Chart.Series["Series1"].Points.AddXY(chartValue[1], chartValue[3], chartValue[4], chartValue[5], chartValue[2]);
+
+                if (OpenMovingValue.Count == 60 && CloseMovingValue.Count == 60)
+                {
+                    CalculateMovingAverage();
+                }
             }
 
         }
@@ -106,6 +112,10 @@ namespace IBTradingPlatform
                     {
                         // Add the text to the list box
                         this.TbAsk.Text = tickerPrice[2];
+                        if (Convert.ToDecimal(tickerPrice[2]) < MovingAverage)
+                        {
+                            BtnBuy.Visible = true;
+                        }    
                     }
                     else if (tickerType == 66) // tickerPrice == 66 for delayed time
                     {
@@ -227,7 +237,6 @@ namespace IBTradingPlatform
             IbClient.ClientSocket.reqMktData(1, contract, "", false, false, mkDataOptions);
 
             IbClient.ClientSocket.reqHistoricalData(99, contract, "", strDuration, strBarSize, "TRADES", 1, 1, false, null);
-            timer1.Start();
         }
 
         private void CbSymbol_SelectedIndexChanged(object sender, EventArgs e)
@@ -325,6 +334,14 @@ namespace IBTradingPlatform
             TbOrderId.Text = Convert.ToString(OrderId);
         }
 
+        public void CalculateMovingAverage()
+        {
+            decimal averageSum = (OpenMovingValue.Skip(30).Take(30).Sum() + CloseMovingValue.Skip(30).Take(30).Sum()) / 2;
+            MovingAverage = averageSum / 30;
+
+            TbMA.Text = String.Format("{0:.##}", MovingAverage);
+        }
+
         private void TbBid_Click(object sender, EventArgs e)
         {
             NumPrice.Value = Convert.ToDecimal(TbBid.Text);
@@ -338,20 +355,6 @@ namespace IBTradingPlatform
         private void TbLast_Click(object sender, EventArgs e)
         {
             NumPrice.Value = Convert.ToDecimal(TbLast.Text);
-        }
-
-        private void timer1_Tick(object sender, EventArgs e)
-        {
-            if (Timer1Counter == 0)
-            {
-                // Stop the timer
-                timer1.Stop();
-                // Add the bid price to the limit box
-                NumPrice.Value = Convert.ToDecimal(TbBid.Text);
-                // Reset timer back to 5
-                Timer1Counter = 5;
-            }
-            Timer1Counter--;
         }
     }
 }
