@@ -33,9 +33,9 @@ namespace IBTradingPlatform
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea2 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend2 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series2 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea3 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend3 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series3 = new System.Windows.Forms.DataVisualization.Charting.Series();
             this.BtnConnect = new System.Windows.Forms.Button();
             this.CbSymbol = new System.Windows.Forms.ComboBox();
             this.LbData = new System.Windows.Forms.ListBox();
@@ -83,7 +83,7 @@ namespace IBTradingPlatform
             // 
             // BtnConnect
             // 
-            this.BtnConnect.Location = new System.Drawing.Point(35, 12);
+            this.BtnConnect.Location = new System.Drawing.Point(493, 508);
             this.BtnConnect.Name = "BtnConnect";
             this.BtnConnect.Size = new System.Drawing.Size(132, 45);
             this.BtnConnect.TabIndex = 0;
@@ -102,7 +102,7 @@ namespace IBTradingPlatform
             "MSFT",
             "TSLA",
             "SPEC"});
-            this.CbSymbol.Location = new System.Drawing.Point(35, 179);
+            this.CbSymbol.Location = new System.Drawing.Point(37, 120);
             this.CbSymbol.Name = "CbSymbol";
             this.CbSymbol.Size = new System.Drawing.Size(121, 21);
             this.CbSymbol.TabIndex = 1;
@@ -114,15 +114,15 @@ namespace IBTradingPlatform
             // LbData
             // 
             this.LbData.FormattingEnabled = true;
-            this.LbData.Location = new System.Drawing.Point(35, 385);
+            this.LbData.Location = new System.Drawing.Point(37, 326);
             this.LbData.Name = "LbData";
-            this.LbData.Size = new System.Drawing.Size(403, 95);
+            this.LbData.Size = new System.Drawing.Size(430, 95);
             this.LbData.TabIndex = 2;
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(36, 160);
+            this.label1.Location = new System.Drawing.Point(34, 101);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(41, 13);
             this.label1.TabIndex = 3;
@@ -131,7 +131,7 @@ namespace IBTradingPlatform
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(181, 160);
+            this.label2.Location = new System.Drawing.Point(183, 101);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(46, 13);
             this.label2.TabIndex = 5;
@@ -144,7 +144,7 @@ namespace IBTradingPlatform
             0,
             0,
             0});
-            this.NumQuantity.Location = new System.Drawing.Point(184, 179);
+            this.NumQuantity.Location = new System.Drawing.Point(186, 120);
             this.NumQuantity.Maximum = new decimal(new int[] {
             5000,
             0,
@@ -162,7 +162,7 @@ namespace IBTradingPlatform
             0,
             0,
             131072});
-            this.NumPrice.Location = new System.Drawing.Point(345, 179);
+            this.NumPrice.Location = new System.Drawing.Point(347, 120);
             this.NumPrice.Maximum = new decimal(new int[] {
             5000,
             0,
@@ -175,7 +175,7 @@ namespace IBTradingPlatform
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(342, 160);
+            this.label3.Location = new System.Drawing.Point(344, 101);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(55, 13);
             this.label3.TabIndex = 8;
@@ -184,7 +184,7 @@ namespace IBTradingPlatform
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(32, 216);
+            this.label4.Location = new System.Drawing.Point(34, 157);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(40, 13);
             this.label4.TabIndex = 9;
@@ -202,7 +202,7 @@ namespace IBTradingPlatform
             "ARCA",
             "BATS",
             "ISLAND"});
-            this.CbMarket.Location = new System.Drawing.Point(35, 232);
+            this.CbMarket.Location = new System.Drawing.Point(37, 173);
             this.CbMarket.Name = "CbMarket";
             this.CbMarket.Size = new System.Drawing.Size(121, 21);
             this.CbMarket.TabIndex = 10;
@@ -220,7 +220,7 @@ namespace IBTradingPlatform
             "MKT",
             "STP",
             "MOC"});
-            this.CbOrderType.Location = new System.Drawing.Point(190, 232);
+            this.CbOrderType.Location = new System.Drawing.Point(186, 173);
             this.CbOrderType.Name = "CbOrderType";
             this.CbOrderType.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.CbOrderType.Size = new System.Drawing.Size(121, 21);
@@ -230,7 +230,7 @@ namespace IBTradingPlatform
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(187, 216);
+            this.label5.Location = new System.Drawing.Point(183, 157);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(31, 13);
             this.label5.TabIndex = 11;
@@ -238,7 +238,7 @@ namespace IBTradingPlatform
             // 
             // TbVisible
             // 
-            this.TbVisible.Location = new System.Drawing.Point(345, 232);
+            this.TbVisible.Location = new System.Drawing.Point(347, 173);
             this.TbVisible.Name = "TbVisible";
             this.TbVisible.Size = new System.Drawing.Size(100, 20);
             this.TbVisible.TabIndex = 13;
@@ -247,7 +247,7 @@ namespace IBTradingPlatform
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(342, 216);
+            this.label6.Location = new System.Drawing.Point(344, 157);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(37, 13);
             this.label6.TabIndex = 14;
@@ -256,7 +256,7 @@ namespace IBTradingPlatform
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(32, 273);
+            this.label7.Location = new System.Drawing.Point(34, 214);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(92, 13);
             this.label7.TabIndex = 16;
@@ -264,7 +264,7 @@ namespace IBTradingPlatform
             // 
             // TbExchange
             // 
-            this.TbExchange.Location = new System.Drawing.Point(35, 289);
+            this.TbExchange.Location = new System.Drawing.Point(37, 230);
             this.TbExchange.Name = "TbExchange";
             this.TbExchange.Size = new System.Drawing.Size(100, 20);
             this.TbExchange.TabIndex = 15;
@@ -273,7 +273,7 @@ namespace IBTradingPlatform
             // label8
             // 
             this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(184, 269);
+            this.label8.Location = new System.Drawing.Point(182, 213);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(23, 13);
             this.label8.TabIndex = 18;
@@ -289,7 +289,7 @@ namespace IBTradingPlatform
             this.CbTIF.Items.AddRange(new object[] {
             "DAY",
             "GTC"});
-            this.CbTIF.Location = new System.Drawing.Point(183, 288);
+            this.CbTIF.Location = new System.Drawing.Point(185, 229);
             this.CbTIF.Name = "CbTIF";
             this.CbTIF.Size = new System.Drawing.Size(121, 21);
             this.CbTIF.TabIndex = 17;
@@ -298,7 +298,7 @@ namespace IBTradingPlatform
             // label9
             // 
             this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(342, 273);
+            this.label9.Location = new System.Drawing.Point(344, 214);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(22, 13);
             this.label9.TabIndex = 20;
@@ -307,7 +307,7 @@ namespace IBTradingPlatform
             // 
             // TbBid
             // 
-            this.TbBid.Location = new System.Drawing.Point(345, 289);
+            this.TbBid.Location = new System.Drawing.Point(347, 230);
             this.TbBid.Name = "TbBid";
             this.TbBid.Size = new System.Drawing.Size(100, 20);
             this.TbBid.TabIndex = 19;
@@ -317,7 +317,7 @@ namespace IBTradingPlatform
             // label10
             // 
             this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(32, 328);
+            this.label10.Location = new System.Drawing.Point(34, 269);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(25, 13);
             this.label10.TabIndex = 22;
@@ -326,7 +326,7 @@ namespace IBTradingPlatform
             // 
             // TbAsk
             // 
-            this.TbAsk.Location = new System.Drawing.Point(35, 344);
+            this.TbAsk.Location = new System.Drawing.Point(37, 285);
             this.TbAsk.Name = "TbAsk";
             this.TbAsk.Size = new System.Drawing.Size(100, 20);
             this.TbAsk.TabIndex = 21;
@@ -336,7 +336,7 @@ namespace IBTradingPlatform
             // label11
             // 
             this.label11.AutoSize = true;
-            this.label11.Location = new System.Drawing.Point(187, 328);
+            this.label11.Location = new System.Drawing.Point(182, 269);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(27, 13);
             this.label11.TabIndex = 24;
@@ -345,7 +345,7 @@ namespace IBTradingPlatform
             // 
             // TbLast
             // 
-            this.TbLast.Location = new System.Drawing.Point(190, 344);
+            this.TbLast.Location = new System.Drawing.Point(185, 285);
             this.TbLast.Name = "TbLast";
             this.TbLast.Size = new System.Drawing.Size(100, 20);
             this.TbLast.TabIndex = 23;
@@ -354,7 +354,7 @@ namespace IBTradingPlatform
             // 
             // TbOrderId
             // 
-            this.TbOrderId.Location = new System.Drawing.Point(35, 125);
+            this.TbOrderId.Location = new System.Drawing.Point(37, 66);
             this.TbOrderId.Name = "TbOrderId";
             this.TbOrderId.Size = new System.Drawing.Size(100, 20);
             this.TbOrderId.TabIndex = 25;
@@ -363,7 +363,7 @@ namespace IBTradingPlatform
             // label12
             // 
             this.label12.AutoSize = true;
-            this.label12.Location = new System.Drawing.Point(32, 104);
+            this.label12.Location = new System.Drawing.Point(34, 45);
             this.label12.Name = "label12";
             this.label12.Size = new System.Drawing.Size(96, 13);
             this.label12.TabIndex = 26;
@@ -371,7 +371,7 @@ namespace IBTradingPlatform
             // 
             // BtnDisconnect
             // 
-            this.BtnDisconnect.Location = new System.Drawing.Point(313, 12);
+            this.BtnDisconnect.Location = new System.Drawing.Point(848, 508);
             this.BtnDisconnect.Name = "BtnDisconnect";
             this.BtnDisconnect.Size = new System.Drawing.Size(132, 45);
             this.BtnDisconnect.TabIndex = 27;
@@ -382,9 +382,9 @@ namespace IBTradingPlatform
             // BtnBuy
             // 
             this.BtnBuy.BackColor = System.Drawing.Color.Lime;
-            this.BtnBuy.Location = new System.Drawing.Point(35, 503);
+            this.BtnBuy.Location = new System.Drawing.Point(37, 444);
             this.BtnBuy.Name = "BtnBuy";
-            this.BtnBuy.Size = new System.Drawing.Size(75, 23);
+            this.BtnBuy.Size = new System.Drawing.Size(120, 60);
             this.BtnBuy.TabIndex = 28;
             this.BtnBuy.Text = "BUY";
             this.BtnBuy.UseVisualStyleBackColor = false;
@@ -394,9 +394,9 @@ namespace IBTradingPlatform
             // BtnSell
             // 
             this.BtnSell.BackColor = System.Drawing.Color.Red;
-            this.BtnSell.Location = new System.Drawing.Point(363, 503);
+            this.BtnSell.Location = new System.Drawing.Point(347, 444);
             this.BtnSell.Name = "BtnSell";
-            this.BtnSell.Size = new System.Drawing.Size(75, 23);
+            this.BtnSell.Size = new System.Drawing.Size(120, 60);
             this.BtnSell.TabIndex = 29;
             this.BtnSell.Text = "SELL";
             this.BtnSell.UseVisualStyleBackColor = false;
@@ -405,7 +405,7 @@ namespace IBTradingPlatform
             // CkOutside
             // 
             this.CkOutside.AutoSize = true;
-            this.CkOutside.Location = new System.Drawing.Point(345, 346);
+            this.CkOutside.Location = new System.Drawing.Point(347, 287);
             this.CkOutside.Name = "CkOutside";
             this.CkOutside.Size = new System.Drawing.Size(85, 17);
             this.CkOutside.TabIndex = 30;
@@ -455,21 +455,21 @@ namespace IBTradingPlatform
             // 
             // Chart
             // 
-            chartArea2.AxisX.IsStartedFromZero = false;
-            chartArea2.AxisY.IsStartedFromZero = false;
-            chartArea2.Name = "ChartArea1";
-            this.Chart.ChartAreas.Add(chartArea2);
-            legend2.Name = "Legend1";
-            this.Chart.Legends.Add(legend2);
+            chartArea3.AxisX.IsStartedFromZero = false;
+            chartArea3.AxisY.IsStartedFromZero = false;
+            chartArea3.Name = "ChartArea1";
+            this.Chart.ChartAreas.Add(chartArea3);
+            legend3.Name = "Legend1";
+            this.Chart.Legends.Add(legend3);
             this.Chart.Location = new System.Drawing.Point(32, 20);
             this.Chart.Name = "Chart";
-            series2.ChartArea = "ChartArea1";
-            series2.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Candlestick;
-            series2.CustomProperties = "PriceUpColor=Red, PriceDownColor=Blue";
-            series2.Legend = "Legend1";
-            series2.Name = "Series1";
-            series2.YValuesPerPoint = 4;
-            this.Chart.Series.Add(series2);
+            series3.ChartArea = "ChartArea1";
+            series3.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Candlestick;
+            series3.CustomProperties = "PriceUpColor=Red, PriceDownColor=Blue";
+            series3.Legend = "Legend1";
+            series3.Name = "Series1";
+            series3.YValuesPerPoint = 4;
+            this.Chart.Series.Add(series3);
             this.Chart.Size = new System.Drawing.Size(427, 410);
             this.Chart.TabIndex = 0;
             this.Chart.Text = "chart1";
@@ -477,7 +477,7 @@ namespace IBTradingPlatform
             // label13
             // 
             this.label13.AutoSize = true;
-            this.label13.Location = new System.Drawing.Point(180, 109);
+            this.label13.Location = new System.Drawing.Point(182, 50);
             this.label13.Name = "label13";
             this.label13.Size = new System.Drawing.Size(85, 13);
             this.label13.TabIndex = 33;
@@ -486,7 +486,7 @@ namespace IBTradingPlatform
             // 
             // TbMA
             // 
-            this.TbMA.Location = new System.Drawing.Point(183, 125);
+            this.TbMA.Location = new System.Drawing.Point(185, 66);
             this.TbMA.Name = "TbMA";
             this.TbMA.Size = new System.Drawing.Size(100, 20);
             this.TbMA.TabIndex = 32;

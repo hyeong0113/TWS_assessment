@@ -183,14 +183,17 @@ namespace IBTradingPlatform
             OrderId = IbClient.NextOrderId;
 
             GetData();
+            BtnConnect.Visible = false;
         }
 
         private void BtnDisconnect_Click(object sender, EventArgs e)
         {
             // Disconnect TWS
             IbClient.ClientSocket.eDisconnect();
+            BtnConnect.Visible = true;
         }
 
+        // Fetch data of selected symbol
         private void GetData()
         {
             DateTime now = DateTime.Now;
@@ -241,6 +244,7 @@ namespace IBTradingPlatform
 
         private void CbSymbol_SelectedIndexChanged(object sender, EventArgs e)
         {
+            ResetAverage();
             GetData();
         }
 
@@ -271,6 +275,7 @@ namespace IBTradingPlatform
 
                 CbSymbol.SelectAll();
 
+                ResetAverage();
                 GetData();
             }
         }
@@ -340,6 +345,14 @@ namespace IBTradingPlatform
             MovingAverage = averageSum / 30;
 
             TbMA.Text = String.Format("{0:.##}", MovingAverage);
+        }
+
+        // Reset all stored values related to moving average and call another selected data
+        public void ResetAverage()
+        {
+            OpenMovingValue.Clear();
+            CloseMovingValue.Clear();
+            MovingAverage = 0;
         }
 
         private void TbBid_Click(object sender, EventArgs e)
