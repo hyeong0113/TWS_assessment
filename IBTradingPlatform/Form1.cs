@@ -19,7 +19,6 @@ namespace IBTradingPlatform
         public const int PORTNUMBER = 7497;
 
         // Enables asynchronous calls for setting the text property
-        // on a ListBox control
         delegate void SetTextCallback(string text);
 
         delegate void SetTextCallbackTickPrice(string tickPrice);
@@ -36,6 +35,7 @@ namespace IBTradingPlatform
         List<decimal> CloseMovingValue = new List<decimal>();
         decimal MovingAverage = 0;
 
+        // Add Historical Data to form
         public void AddItemHistoricalData(string strHistoricalData)
         {
             if (this.TbLast.InvokeRequired)
@@ -64,6 +64,7 @@ namespace IBTradingPlatform
                 HistoricalData.Items.Add(outputString);
                 Chart.Series["Series1"].Points.AddXY(chartValue[1], chartValue[3], chartValue[4], chartValue[5], chartValue[2]);
 
+                // Since default time duration is 60, number of records should be greather than 60
                 if (OpenMovingValue.Count >= 60 && CloseMovingValue.Count >= 60)
                 {
                     CalculateMovingAverage();
@@ -133,7 +134,7 @@ namespace IBTradingPlatform
             }
         }
 
-
+        // Disploy position data
         public void AddListPosition(string strPosition)
         {
             // See if a new invocation is required form a different thread
@@ -267,6 +268,7 @@ namespace IBTradingPlatform
             IbClient.ClientSocket.reqPositions();
         }
 
+        // Fetch data with changed current symbol
         private void CbSymbol_SelectedIndexChanged(object sender, EventArgs e)
         {
             ResetAverage();
@@ -305,6 +307,7 @@ namespace IBTradingPlatform
             }
         }
 
+        // Calculate moving average
         public void CalculateMovingAverage()
         {
             int duration = OpenMovingValue.Count - 30;
