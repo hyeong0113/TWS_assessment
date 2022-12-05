@@ -33,23 +33,16 @@ namespace IBTradingPlatform
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea3 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend3 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series3 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea5 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend5 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series5 = new System.Windows.Forms.DataVisualization.Charting.Series();
             this.BtnConnect = new System.Windows.Forms.Button();
             this.CbSymbol = new System.Windows.Forms.ComboBox();
-            this.LbData = new System.Windows.Forms.ListBox();
             this.label1 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
-            this.NumQuantity = new System.Windows.Forms.NumericUpDown();
-            this.NumPrice = new System.Windows.Forms.NumericUpDown();
-            this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.CbMarket = new System.Windows.Forms.ComboBox();
             this.CbOrderType = new System.Windows.Forms.ComboBox();
             this.label5 = new System.Windows.Forms.Label();
-            this.TbVisible = new System.Windows.Forms.TextBox();
-            this.label6 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
             this.TbExchange = new System.Windows.Forms.TextBox();
             this.label8 = new System.Windows.Forms.Label();
@@ -64,7 +57,6 @@ namespace IBTradingPlatform
             this.label12 = new System.Windows.Forms.Label();
             this.BtnDisconnect = new System.Windows.Forms.Button();
             this.BtnSell = new System.Windows.Forms.Button();
-            this.CkOutside = new System.Windows.Forms.CheckBox();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.HistoricalData = new System.Windows.Forms.ListBox();
@@ -72,15 +64,23 @@ namespace IBTradingPlatform
             this.Chart = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.label13 = new System.Windows.Forms.Label();
             this.TbMA = new System.Windows.Forms.TextBox();
-            this.label14 = new System.Windows.Forms.Label();
             this.label15 = new System.Windows.Forms.Label();
             this.LbPosition = new System.Windows.Forms.ListBox();
-            ((System.ComponentModel.ISupportInitialize)(this.NumQuantity)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.NumPrice)).BeginInit();
+            this.LbData = new System.Windows.Forms.ListBox();
+            this.label14 = new System.Windows.Forms.Label();
+            this.CkOutside = new System.Windows.Forms.CheckBox();
+            this.TbVisible = new System.Windows.Forms.TextBox();
+            this.label6 = new System.Windows.Forms.Label();
+            this.NumPrice = new System.Windows.Forms.NumericUpDown();
+            this.label3 = new System.Windows.Forms.Label();
+            this.NumQuantity = new System.Windows.Forms.NumericUpDown();
+            this.label2 = new System.Windows.Forms.Label();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.tabPage2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.Chart)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.NumPrice)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.NumQuantity)).BeginInit();
             this.SuspendLayout();
             // 
             // BtnConnect
@@ -113,14 +113,6 @@ namespace IBTradingPlatform
             this.CbSymbol.KeyDown += new System.Windows.Forms.KeyEventHandler(this.CbSymbol_KeyDown);
             this.CbSymbol.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.CbSymbol_KeyPress);
             // 
-            // LbData
-            // 
-            this.LbData.FormattingEnabled = true;
-            this.LbData.Location = new System.Drawing.Point(37, 326);
-            this.LbData.Name = "LbData";
-            this.LbData.Size = new System.Drawing.Size(430, 95);
-            this.LbData.TabIndex = 2;
-            // 
             // label1
             // 
             this.label1.AutoSize = true;
@@ -129,59 +121,6 @@ namespace IBTradingPlatform
             this.label1.Size = new System.Drawing.Size(41, 13);
             this.label1.TabIndex = 3;
             this.label1.Text = "Symbol";
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(183, 101);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(46, 13);
-            this.label2.TabIndex = 5;
-            this.label2.Text = "Quantity";
-            // 
-            // NumQuantity
-            // 
-            this.NumQuantity.Increment = new decimal(new int[] {
-            10,
-            0,
-            0,
-            0});
-            this.NumQuantity.Location = new System.Drawing.Point(186, 120);
-            this.NumQuantity.Maximum = new decimal(new int[] {
-            5000,
-            0,
-            0,
-            0});
-            this.NumQuantity.Name = "NumQuantity";
-            this.NumQuantity.Size = new System.Drawing.Size(120, 20);
-            this.NumQuantity.TabIndex = 6;
-            // 
-            // NumPrice
-            // 
-            this.NumPrice.DecimalPlaces = 2;
-            this.NumPrice.Increment = new decimal(new int[] {
-            1,
-            0,
-            0,
-            131072});
-            this.NumPrice.Location = new System.Drawing.Point(347, 120);
-            this.NumPrice.Maximum = new decimal(new int[] {
-            5000,
-            0,
-            0,
-            0});
-            this.NumPrice.Name = "NumPrice";
-            this.NumPrice.Size = new System.Drawing.Size(120, 20);
-            this.NumPrice.TabIndex = 7;
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(344, 101);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(55, 13);
-            this.label3.TabIndex = 8;
-            this.label3.Text = "Limit Price";
             // 
             // label4
             // 
@@ -237,23 +176,6 @@ namespace IBTradingPlatform
             this.label5.Size = new System.Drawing.Size(31, 13);
             this.label5.TabIndex = 11;
             this.label5.Text = "Type";
-            // 
-            // TbVisible
-            // 
-            this.TbVisible.Location = new System.Drawing.Point(347, 173);
-            this.TbVisible.Name = "TbVisible";
-            this.TbVisible.Size = new System.Drawing.Size(100, 20);
-            this.TbVisible.TabIndex = 13;
-            this.TbVisible.Text = "100";
-            // 
-            // label6
-            // 
-            this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(344, 157);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(37, 13);
-            this.label6.TabIndex = 14;
-            this.label6.Text = "Visible";
             // 
             // label7
             // 
@@ -388,17 +310,6 @@ namespace IBTradingPlatform
             this.BtnSell.Size = new System.Drawing.Size(75, 23);
             this.BtnSell.TabIndex = 34;
             // 
-            // CkOutside
-            // 
-            this.CkOutside.AutoSize = true;
-            this.CkOutside.Location = new System.Drawing.Point(347, 287);
-            this.CkOutside.Name = "CkOutside";
-            this.CkOutside.Size = new System.Drawing.Size(85, 17);
-            this.CkOutside.TabIndex = 30;
-            this.CkOutside.Text = "OutsideRTH";
-            this.CkOutside.TextAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.CkOutside.UseVisualStyleBackColor = true;
-            // 
             // tabControl1
             // 
             this.tabControl1.Controls.Add(this.tabPage1);
@@ -441,21 +352,21 @@ namespace IBTradingPlatform
             // 
             // Chart
             // 
-            chartArea3.AxisX.IsStartedFromZero = false;
-            chartArea3.AxisY.IsStartedFromZero = false;
-            chartArea3.Name = "ChartArea1";
-            this.Chart.ChartAreas.Add(chartArea3);
-            legend3.Name = "Legend1";
-            this.Chart.Legends.Add(legend3);
+            chartArea5.AxisX.IsStartedFromZero = false;
+            chartArea5.AxisY.IsStartedFromZero = false;
+            chartArea5.Name = "ChartArea1";
+            this.Chart.ChartAreas.Add(chartArea5);
+            legend5.Name = "Legend1";
+            this.Chart.Legends.Add(legend5);
             this.Chart.Location = new System.Drawing.Point(32, 20);
             this.Chart.Name = "Chart";
-            series3.ChartArea = "ChartArea1";
-            series3.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Candlestick;
-            series3.CustomProperties = "PriceUpColor=Red, PriceDownColor=Blue";
-            series3.Legend = "Legend1";
-            series3.Name = "Series1";
-            series3.YValuesPerPoint = 4;
-            this.Chart.Series.Add(series3);
+            series5.ChartArea = "ChartArea1";
+            series5.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Candlestick;
+            series5.CustomProperties = "PriceUpColor=Red, PriceDownColor=Blue";
+            series5.Legend = "Legend1";
+            series5.Name = "Series1";
+            series5.YValuesPerPoint = 4;
+            this.Chart.Series.Add(series5);
             this.Chart.Size = new System.Drawing.Size(427, 410);
             this.Chart.TabIndex = 0;
             this.Chart.Text = "chart1";
@@ -478,16 +389,6 @@ namespace IBTradingPlatform
             this.TbMA.TabIndex = 32;
             this.TbMA.Text = "0.00";
             // 
-            // label14
-            // 
-            this.label14.AutoSize = true;
-            this.label14.Location = new System.Drawing.Point(34, 310);
-            this.label14.Name = "label14";
-            this.label14.Size = new System.Drawing.Size(55, 13);
-            this.label14.TabIndex = 35;
-            this.label14.Text = "Tick Price";
-            this.label14.UseWaitCursor = true;
-            // 
             // label15
             // 
             this.label15.AutoSize = true;
@@ -505,6 +406,125 @@ namespace IBTradingPlatform
             this.LbPosition.Name = "LbPosition";
             this.LbPosition.Size = new System.Drawing.Size(430, 95);
             this.LbPosition.TabIndex = 36;
+            // 
+            // LbData
+            // 
+            this.LbData.FormattingEnabled = true;
+            this.LbData.Location = new System.Drawing.Point(37, 326);
+            this.LbData.Name = "LbData";
+            this.LbData.Size = new System.Drawing.Size(430, 95);
+            this.LbData.TabIndex = 2;
+            // 
+            // label14
+            // 
+            this.label14.AutoSize = true;
+            this.label14.Location = new System.Drawing.Point(34, 310);
+            this.label14.Name = "label14";
+            this.label14.Size = new System.Drawing.Size(55, 13);
+            this.label14.TabIndex = 35;
+            this.label14.Text = "Tick Price";
+            this.label14.UseWaitCursor = true;
+            // 
+            // CkOutside
+            // 
+            this.CkOutside.AutoSize = true;
+            this.CkOutside.Location = new System.Drawing.Point(347, 287);
+            this.CkOutside.Name = "CkOutside";
+            this.CkOutside.Size = new System.Drawing.Size(85, 17);
+            this.CkOutside.TabIndex = 30;
+            this.CkOutside.Text = "OutsideRTH";
+            this.CkOutside.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.CkOutside.UseVisualStyleBackColor = true;
+            // 
+            // TbVisible
+            // 
+            this.TbVisible.Location = new System.Drawing.Point(347, 173);
+            this.TbVisible.Name = "TbVisible";
+            this.TbVisible.Size = new System.Drawing.Size(100, 20);
+            this.TbVisible.TabIndex = 13;
+            this.TbVisible.Text = "100";
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(344, 157);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(37, 13);
+            this.label6.TabIndex = 14;
+            this.label6.Text = "Visible";
+            // 
+            // NumPrice
+            // 
+            this.NumPrice.DecimalPlaces = 2;
+            this.NumPrice.Increment = new decimal(new int[] {
+            1,
+            0,
+            0,
+            131072});
+            this.NumPrice.Location = new System.Drawing.Point(347, 120);
+            this.NumPrice.Maximum = new decimal(new int[] {
+            5000,
+            0,
+            0,
+            0});
+            this.NumPrice.Minimum = new decimal(new int[] {
+            200,
+            0,
+            0,
+            0});
+            this.NumPrice.Name = "NumPrice";
+            this.NumPrice.Size = new System.Drawing.Size(120, 20);
+            this.NumPrice.TabIndex = 7;
+            this.NumPrice.Value = new decimal(new int[] {
+            200,
+            0,
+            0,
+            0});
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(344, 101);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(55, 13);
+            this.label3.TabIndex = 8;
+            this.label3.Text = "Limit Price";
+            // 
+            // NumQuantity
+            // 
+            this.NumQuantity.Increment = new decimal(new int[] {
+            10,
+            0,
+            0,
+            0});
+            this.NumQuantity.Location = new System.Drawing.Point(186, 120);
+            this.NumQuantity.Maximum = new decimal(new int[] {
+            5000,
+            0,
+            0,
+            0});
+            this.NumQuantity.Minimum = new decimal(new int[] {
+            100,
+            0,
+            0,
+            0});
+            this.NumQuantity.Name = "NumQuantity";
+            this.NumQuantity.Size = new System.Drawing.Size(120, 20);
+            this.NumQuantity.TabIndex = 6;
+            this.NumQuantity.Value = new decimal(new int[] {
+            100,
+            0,
+            0,
+            0});
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(183, 101);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(46, 13);
+            this.label2.TabIndex = 5;
+            this.label2.Text = "Quantity";
             // 
             // Quantity
             // 
@@ -548,12 +568,12 @@ namespace IBTradingPlatform
             this.Controls.Add(this.BtnConnect);
             this.Name = "Quantity";
             this.Text = "Form1";
-            ((System.ComponentModel.ISupportInitialize)(this.NumQuantity)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.NumPrice)).EndInit();
             this.tabControl1.ResumeLayout(false);
             this.tabPage1.ResumeLayout(false);
             this.tabPage2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.Chart)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.NumPrice)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.NumQuantity)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -563,18 +583,11 @@ namespace IBTradingPlatform
 
         private Button BtnConnect;
         private ComboBox CbSymbol;
-        private ListBox LbData;
         private Label label1;
-        private Label label2;
-        private NumericUpDown NumQuantity;
-        private NumericUpDown NumPrice;
-        private Label label3;
         private Label label4;
         private ComboBox CbMarket;
         private ComboBox CbOrderType;
         private Label label5;
-        private TextBox TbVisible;
-        private Label label6;
         private Label label7;
         private TextBox TbExchange;
         private Label label8;
@@ -589,7 +602,6 @@ namespace IBTradingPlatform
         private Label label12;
         private Button BtnDisconnect;
         private Button BtnSell;
-        private CheckBox CkOutside;
         private TabControl tabControl1;
         private TabPage tabPage1;
         private ListBox HistoricalData;
@@ -597,9 +609,17 @@ namespace IBTradingPlatform
         private System.Windows.Forms.DataVisualization.Charting.Chart Chart;
         private Label label13;
         private TextBox TbMA;
-        private Label label14;
         private Label label15;
         private ListBox LbPosition;
+        private ListBox LbData;
+        private Label label14;
+        private CheckBox CkOutside;
+        private TextBox TbVisible;
+        private Label label6;
+        private NumericUpDown NumPrice;
+        private Label label3;
+        private NumericUpDown NumQuantity;
+        private Label label2;
     }
 }
 

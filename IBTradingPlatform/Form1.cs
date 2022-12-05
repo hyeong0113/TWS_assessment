@@ -15,6 +15,9 @@ namespace IBTradingPlatform
 {
     public partial class Quantity : Form
     {
+        // Change your port number
+        public const int PORTNUMBER = 7497;
+
         // Enables asynchronous calls for setting the text property
         // on a ListBox control
         delegate void SetTextCallback(string text);
@@ -61,7 +64,7 @@ namespace IBTradingPlatform
                 HistoricalData.Items.Add(outputString);
                 Chart.Series["Series1"].Points.AddXY(chartValue[1], chartValue[3], chartValue[4], chartValue[5], chartValue[2]);
 
-                if (OpenMovingValue.Count == 60 && CloseMovingValue.Count == 60)
+                if (OpenMovingValue.Count >= 60 && CloseMovingValue.Count >= 60)
                 {
                     CalculateMovingAverage();
                 }
@@ -118,7 +121,6 @@ namespace IBTradingPlatform
                         this.TbAsk.Text = tickerPrice[2];
                         if (Convert.ToDecimal(tickerPrice[2]) < MovingAverage)
                         {
-                            //BtnBuy.Visible = true;
                             PlaceOrder();
                         }    
                     }
@@ -178,7 +180,7 @@ namespace IBTradingPlatform
             // host: IP address or host name of the host running TWS
             // port: listening port 7497
             // clientId: client application identifier can be any number
-            IbClient.ClientSocket.eConnect("", 7497, 0);
+            IbClient.ClientSocket.eConnect("", PORTNUMBER, 0);
 
             var reader = new EReader(IbClient.ClientSocket, IbClient.Signal);
             reader.Start();
@@ -217,7 +219,6 @@ namespace IBTradingPlatform
         // Fetch data of selected symbol
         private void GetData()
         {
-            DateTime now = DateTime.Now;
             // Clear Position data
             LbPosition.Items.Clear();
             // Clear Historical data
@@ -226,8 +227,8 @@ namespace IBTradingPlatform
 
             // Clear Chart
             Chart.Series[0].Points.Clear();
-            // Set EmdTime
-            string strEndDate = now.ToString("yyyyMMDD 16:05:00");
+            // Set EndTime
+            string strEndDate = DateTime.Now.AddHours(1).ToString("yyyyMMdd hh:mm:ss");
             // Time Duration
             string strDuration = "3600 S";
             // Bar size
@@ -255,14 +256,13 @@ namespace IBTradingPlatform
 
             // If using delayed market data subscription un-comment
             // the line below to request delayed data
-            // 1 = live data
             // 3 = delayed data
             IbClient.ClientSocket.reqMarketDataType(3);
 
             // Kick off the subscription for real-time data (add the mktDataOptions list)
             IbClient.ClientSocket.reqMktData(1, contract, "", false, false, mkDataOptions);
 
-            IbClient.ClientSocket.reqHistoricalData(99, contract, "", strDuration, strBarSize, "TRADES", 1, 1, false, null);
+            IbClient.ClientSocket.reqHistoricalData(99, contract, strEndDate, strDuration, strBarSize, "TRADES", 1, 1, false, null);
 
             IbClient.ClientSocket.reqPositions();
         }
@@ -307,7 +307,8 @@ namespace IBTradingPlatform
 
         public void CalculateMovingAverage()
         {
-            decimal averageSum = (OpenMovingValue.Skip(30).Take(30).Sum() + CloseMovingValue.Skip(30).Take(30).Sum()) / 2;
+            int duration = OpenMovingValue.Count - 30;
+            decimal averageSum = (OpenMovingValue.Skip(duration).Take(30).Sum() + CloseMovingValue.Skip(duration).Take(30).Sum()) / 2;
             MovingAverage = averageSum / 30;
 
             TbMA.Text = String.Format("{0:.##}", MovingAverage);
@@ -345,9 +346,9 @@ namespace IBTradingPlatform
             // Gets order type from combobox market or limit order (MKT, or LMT)
             order.OrderType = CbOrderType.Text;
             // Number of shares from the numericupdown box
-            order.TotalQuantity = 100;
+            order.TotalQuantity = NumQuantity.Value;
             // Number of shares from the numericupdown box then converts it to double variable
-            order.LmtPrice = Convert.ToDouble(200);
+            order.LmtPrice = Convert.ToDouble(NumPrice.Value);
 
             // Checks for a stop order
             if (CbOrderType.Text == "STP")
