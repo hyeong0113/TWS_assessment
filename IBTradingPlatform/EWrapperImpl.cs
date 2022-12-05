@@ -233,7 +233,7 @@ namespace IBTradingPlatform
             var ext = ".log";
             string directory = Directory.GetCurrentDirectory() + @"..\..\..\..\" + "transactions" + ext;
 
-            // Checking the existence of the specified
+            // Checking the existence of the orderId and write transaction log
             if (!File.Exists(directory))
             {
                 using (StreamWriter sw = new StreamWriter(directory))
