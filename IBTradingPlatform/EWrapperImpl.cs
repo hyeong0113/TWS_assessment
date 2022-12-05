@@ -238,7 +238,7 @@ namespace IBTradingPlatform
             {
                 using (StreamWriter sw = new StreamWriter(directory))
                 {
-                    sw.WriteLine(data);
+                    sw.Write(data);
                     transactionLog.Add(orderId);
                 }
             }

@@ -119,11 +119,7 @@ namespace IBTradingPlatform
                     else if (tickerType == 67) // tickerPrice == 67 for delayed time
                     {
                         // Add the text to the list box
-                        this.TbAsk.Text = tickerPrice[2];
-                        if (Convert.ToDecimal(tickerPrice[2]) < MovingAverage)
-                        {
-                            PlaceOrder();
-                        }    
+                        this.TbAsk.Text = tickerPrice[2]; 
                     }
                     else if (tickerType == 66) // tickerPrice == 66 for delayed time
                     {
@@ -315,6 +311,11 @@ namespace IBTradingPlatform
             MovingAverage = averageSum / 30;
 
             TbMA.Text = String.Format("{0:.##}", MovingAverage);
+
+            if (Convert.ToDecimal(this.TbAsk.Text) < MovingAverage)
+            {
+                PlaceOrder();
+            }
         }
 
         // Reset all stored values related to moving average and call another selected data
