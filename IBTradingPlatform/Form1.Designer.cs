@@ -63,7 +63,6 @@ namespace IBTradingPlatform
             this.TbOrderId = new System.Windows.Forms.TextBox();
             this.label12 = new System.Windows.Forms.Label();
             this.BtnDisconnect = new System.Windows.Forms.Button();
-            this.BtnBuy = new System.Windows.Forms.Button();
             this.BtnSell = new System.Windows.Forms.Button();
             this.CkOutside = new System.Windows.Forms.CheckBox();
             this.tabControl1 = new System.Windows.Forms.TabControl();
@@ -73,6 +72,9 @@ namespace IBTradingPlatform
             this.Chart = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.label13 = new System.Windows.Forms.Label();
             this.TbMA = new System.Windows.Forms.TextBox();
+            this.label14 = new System.Windows.Forms.Label();
+            this.label15 = new System.Windows.Forms.Label();
+            this.LbPosition = new System.Windows.Forms.ListBox();
             ((System.ComponentModel.ISupportInitialize)(this.NumQuantity)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.NumPrice)).BeginInit();
             this.tabControl1.SuspendLayout();
@@ -379,28 +381,12 @@ namespace IBTradingPlatform
             this.BtnDisconnect.UseVisualStyleBackColor = true;
             this.BtnDisconnect.Click += new System.EventHandler(this.BtnDisconnect_Click);
             // 
-            // BtnBuy
-            // 
-            this.BtnBuy.BackColor = System.Drawing.Color.Lime;
-            this.BtnBuy.Location = new System.Drawing.Point(37, 444);
-            this.BtnBuy.Name = "BtnBuy";
-            this.BtnBuy.Size = new System.Drawing.Size(120, 60);
-            this.BtnBuy.TabIndex = 28;
-            this.BtnBuy.Text = "BUY";
-            this.BtnBuy.UseVisualStyleBackColor = false;
-            this.BtnBuy.Visible = false;
-            this.BtnBuy.Click += new System.EventHandler(this.BtnBuy_Click);
-            // 
             // BtnSell
             // 
-            this.BtnSell.BackColor = System.Drawing.Color.Red;
-            this.BtnSell.Location = new System.Drawing.Point(347, 444);
+            this.BtnSell.Location = new System.Drawing.Point(0, 0);
             this.BtnSell.Name = "BtnSell";
-            this.BtnSell.Size = new System.Drawing.Size(120, 60);
-            this.BtnSell.TabIndex = 29;
-            this.BtnSell.Text = "SELL";
-            this.BtnSell.UseVisualStyleBackColor = false;
-            this.BtnSell.Click += new System.EventHandler(this.BtnSell_Click);
+            this.BtnSell.Size = new System.Drawing.Size(75, 23);
+            this.BtnSell.TabIndex = 34;
             // 
             // CkOutside
             // 
@@ -492,17 +478,47 @@ namespace IBTradingPlatform
             this.TbMA.TabIndex = 32;
             this.TbMA.Text = "0.00";
             // 
+            // label14
+            // 
+            this.label14.AutoSize = true;
+            this.label14.Location = new System.Drawing.Point(34, 310);
+            this.label14.Name = "label14";
+            this.label14.Size = new System.Drawing.Size(55, 13);
+            this.label14.TabIndex = 35;
+            this.label14.Text = "Tick Price";
+            this.label14.UseWaitCursor = true;
+            // 
+            // label15
+            // 
+            this.label15.AutoSize = true;
+            this.label15.Location = new System.Drawing.Point(34, 430);
+            this.label15.Name = "label15";
+            this.label15.Size = new System.Drawing.Size(44, 13);
+            this.label15.TabIndex = 37;
+            this.label15.Text = "Position";
+            this.label15.UseWaitCursor = true;
+            // 
+            // LbPosition
+            // 
+            this.LbPosition.FormattingEnabled = true;
+            this.LbPosition.Location = new System.Drawing.Point(37, 446);
+            this.LbPosition.Name = "LbPosition";
+            this.LbPosition.Size = new System.Drawing.Size(430, 95);
+            this.LbPosition.TabIndex = 36;
+            // 
             // Quantity
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1022, 563);
+            this.Controls.Add(this.label15);
+            this.Controls.Add(this.LbPosition);
+            this.Controls.Add(this.label14);
             this.Controls.Add(this.label13);
             this.Controls.Add(this.TbMA);
             this.Controls.Add(this.tabControl1);
             this.Controls.Add(this.CkOutside);
             this.Controls.Add(this.BtnSell);
-            this.Controls.Add(this.BtnBuy);
             this.Controls.Add(this.BtnDisconnect);
             this.Controls.Add(this.label12);
             this.Controls.Add(this.TbOrderId);
@@ -572,7 +588,6 @@ namespace IBTradingPlatform
         private TextBox TbOrderId;
         private Label label12;
         private Button BtnDisconnect;
-        private Button BtnBuy;
         private Button BtnSell;
         private CheckBox CkOutside;
         private TabControl tabControl1;
@@ -582,6 +597,9 @@ namespace IBTradingPlatform
         private System.Windows.Forms.DataVisualization.Charting.Chart Chart;
         private Label label13;
         private TextBox TbMA;
+        private Label label14;
+        private Label label15;
+        private ListBox LbPosition;
     }
 }
 

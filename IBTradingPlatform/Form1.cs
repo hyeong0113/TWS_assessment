@@ -23,12 +23,16 @@ namespace IBTradingPlatform
 
         delegate void SetCallbackHistoricalData(string strHistoricalData);
 
+        delegate void SetPositionCallback(string strPosition);
+
+
         int OrderId = 0;
 
         // Lists for storing open price and close price for calculating moving average
         List<decimal> OpenMovingValue = new List<decimal>();
         List<decimal> CloseMovingValue = new List<decimal>();
         decimal MovingAverage = 0;
+
         public void AddItemHistoricalData(string strHistoricalData)
         {
             if (this.TbLast.InvokeRequired)
@@ -114,7 +118,8 @@ namespace IBTradingPlatform
                         this.TbAsk.Text = tickerPrice[2];
                         if (Convert.ToDecimal(tickerPrice[2]) < MovingAverage)
                         {
-                            BtnBuy.Visible = true;
+                            //BtnBuy.Visible = true;
+                            PlaceOrder();
                         }    
                     }
                     else if (tickerType == 66) // tickerPrice == 66 for delayed time
@@ -123,6 +128,22 @@ namespace IBTradingPlatform
                         this.TbBid.Text = tickerPrice[2];
                     }
                 }
+            }
+        }
+
+
+        public void AddListPosition(string strPosition)
+        {
+            // See if a new invocation is required form a different thread
+            if (this.LbPosition.InvokeRequired)
+            {
+                SetPositionCallback data = new SetPositionCallback(AddListPosition);
+                this.Invoke(data, new object[] { strPosition });
+            }
+            else
+            {
+                // Add the text string to the list box
+                this.LbPosition.Items.Add(strPosition);
             }
         }
 
@@ -197,6 +218,8 @@ namespace IBTradingPlatform
         private void GetData()
         {
             DateTime now = DateTime.Now;
+            // Clear Position data
+            LbPosition.Items.Clear();
             // Clear Historical data
             HistoricalData.Items.Clear();
             IbClient.ClientSocket.cancelHistoricalData(99);
@@ -240,6 +263,8 @@ namespace IBTradingPlatform
             IbClient.ClientSocket.reqMktData(1, contract, "", false, false, mkDataOptions);
 
             IbClient.ClientSocket.reqHistoricalData(99, contract, "", strDuration, strBarSize, "TRADES", 1, 1, false, null);
+
+            IbClient.ClientSocket.reqPositions();
         }
 
         private void CbSymbol_SelectedIndexChanged(object sender, EventArgs e)
@@ -280,19 +305,23 @@ namespace IBTradingPlatform
             }
         }
 
-        private void BtnBuy_Click(object sender, EventArgs e)
+        public void CalculateMovingAverage()
         {
-            string signal = "BUY";
-            SendOrder(signal);
+            decimal averageSum = (OpenMovingValue.Skip(30).Take(30).Sum() + CloseMovingValue.Skip(30).Take(30).Sum()) / 2;
+            MovingAverage = averageSum / 30;
+
+            TbMA.Text = String.Format("{0:.##}", MovingAverage);
         }
 
-        private void BtnSell_Click(object sender, EventArgs e)
+        // Reset all stored values related to moving average and call another selected data
+        public void ResetAverage()
         {
-            string signal = "SELL";
-            SendOrder(signal);
+            OpenMovingValue.Clear();
+            CloseMovingValue.Clear();
+            MovingAverage = 0;
         }
 
-        public void SendOrder(string signal)
+        public void PlaceOrder()
         {
             // Create a new contract to specify the security we are searching for
             IBApi.Contract contract = new IBApi.Contract();
@@ -312,14 +341,14 @@ namespace IBTradingPlatform
             // Gets the next order id from the text box
             order.OrderId = OrderId;
             // Gets the signal of the order
-            order.Action = signal;
+            order.Action = "BUY";
             // Gets order type from combobox market or limit order (MKT, or LMT)
             order.OrderType = CbOrderType.Text;
             // Number of shares from the numericupdown box
-            order.TotalQuantity = NumQuantity.Value;
+            order.TotalQuantity = 100;
             // Number of shares from the numericupdown box then converts it to double variable
-            order.LmtPrice = Convert.ToDouble(NumPrice.Value);
-            
+            order.LmtPrice = Convert.ToDouble(200);
+
             // Checks for a stop order
             if (CbOrderType.Text == "STP")
             {
@@ -337,22 +366,8 @@ namespace IBTradingPlatform
             // Increase the OrderId value
             OrderId++;
             TbOrderId.Text = Convert.ToString(OrderId);
-        }
 
-        public void CalculateMovingAverage()
-        {
-            decimal averageSum = (OpenMovingValue.Skip(30).Take(30).Sum() + CloseMovingValue.Skip(30).Take(30).Sum()) / 2;
-            MovingAverage = averageSum / 30;
-
-            TbMA.Text = String.Format("{0:.##}", MovingAverage);
-        }
-
-        // Reset all stored values related to moving average and call another selected data
-        public void ResetAverage()
-        {
-            OpenMovingValue.Clear();
-            CloseMovingValue.Clear();
-            MovingAverage = 0;
+            IbClient.ClientSocket.reqAllOpenOrders();
         }
 
         private void TbBid_Click(object sender, EventArgs e)

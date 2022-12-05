@@ -2,6 +2,7 @@
  * and conditions of the IB API Non-Commercial License or the IB API Commercial License, as applicable. */
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using IBApi;
@@ -222,13 +223,29 @@ namespace IBTradingPlatform
         //! [openorder]
         public virtual void openOrder(int orderId, Contract contract, Order order, OrderState orderState)
         {
-            Console.WriteLine("OpenOrder. PermID: " + Util.IntMaxString(order.PermId) + ", ClientId: " + Util.IntMaxString(order.ClientId) + ", OrderId: " + Util.IntMaxString(orderId) + 
+            string data = "OpenOrder. PermID: " + Util.IntMaxString(order.PermId) + ", ClientId: " + Util.IntMaxString(order.ClientId) + ", OrderId: " + Util.IntMaxString(orderId) + 
                 ", Account: " + order.Account + ", Symbol: " + contract.Symbol + ", SecType: " + contract.SecType + " , Exchange: " + contract.Exchange + ", Action: " + order.Action + 
                 ", OrderType: " + order.OrderType + ", TotalQty: " + Util.DecimalMaxString(order.TotalQuantity) + ", CashQty: " + Util.DoubleMaxString(order.CashQty) + 
                 ", LmtPrice: " + Util.DoubleMaxString(order.LmtPrice) + ", AuxPrice: " + Util.DoubleMaxString(order.AuxPrice) + ", Status: " + orderState.Status +
                 ", MinTradeQty: " + Util.IntMaxString(order.MinTradeQty) + ", MinCompeteSize: " + Util.IntMaxString(order.MinCompeteSize) +
-                ", CompeteAgainstBestOffset: " + (order.CompeteAgainstBestOffset == Order.COMPETE_AGAINST_BEST_OFFSET_UP_TO_MID ? "UpToMid" : Util.DoubleMaxString(order.CompeteAgainstBestOffset)) +
-                ", MidOffsetAtWhole: " + Util.DoubleMaxString(order.MidOffsetAtWhole) + ", MidOffsetAtHalf: " + Util.DoubleMaxString(order.MidOffsetAtHalf));
+                ", CompeteAgainstBestOffset: " + (order.CompeteAgainstBestOffset == Order.COMPETE_AGAINST_BEST_OFFSET_UP_TO_MID ? "UpToMid" : Util.DoubleMaxString(order.CompeteAgainstBestOffset)) + "\n";
+
+            var ext = ".log";
+            string directory = Directory.GetCurrentDirectory() + @"..\..\..\..\" + "transactions" + ext;
+
+            // Checking the existence of the specified
+            if (File.Exists(directory))
+            {
+                File.AppendAllText(directory, data);
+            }
+            else
+            {
+                using (StreamWriter sw = new StreamWriter(directory))
+                {
+                    sw.WriteLine(data);
+                    sw.Flush();
+                }
+            }
         }
         //! [openorder]
 
@@ -426,6 +443,14 @@ namespace IBTradingPlatform
         {
             Console.WriteLine("Position. " + account + " - Symbol: " + contract.Symbol + ", SecType: " + contract.SecType + ", Currency: " + contract.Currency + 
                 ", Position: " + Util.DecimalMaxString(pos) + ", Avg cost: " + Util.DoubleMaxString(avgCost));
+
+            string strData = "Position: " + account + ", - Symbol: " + contract.Symbol + ", SecType: " + contract.SecType + ", Currency: " + contract.Currency +
+                ", Position: " + Util.DecimalMaxString(pos) + ", Avg cost: " + Util.DoubleMaxString(avgCost);
+
+            // Write strData to the console
+            myForm.AddListPosition(strData);
+            // Add this tick price to the form by calling the AddListBoxItem delegate
+            myForm.AddListBoxItem(strData);
         }
         //! [position]
 
